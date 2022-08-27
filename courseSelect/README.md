@@ -12,4 +12,4 @@ JS logic:
 
     - below is the problem I encounter
 
-    ![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/error.png) 
+![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/error.png) 

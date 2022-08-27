@@ -69,33 +69,37 @@ body {
 
     position: fixed;
     top: 30%;
-    right: 2cd 0%;
+    right: 20%;
     transform: translate(-30%, -30%);
 }
 
 
-ul li {
+ul li{
     text-transform: capitalize;
-
+    font-size: small;
     width: 100%;
-    height: var(--height-courseList-header);
+    height: var(--height-courseList-header * 3);
     list-style: var(--height-courseList-header);
     list-style: none;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
+    align-items: center;
+    display:flex;
+    justify-content: center;
 
 }
 
-.courseList li:nth-child(2n){
+
+
+
+.courseList li:nth-child(2n) {
     background-color: var(--color-background);
 }
 
-.courseList li{
+.courseList li {
     border-style: solid;
-  border-width: 2px;
+    border-width: 2px;
+    text-align: center;
 
- 
+
 }
 
 
@@ -110,27 +114,27 @@ ul li {
 ul {
     height: calc(var(--height-courseList) - var(--height-courseList-header));
     overflow: auto;
-    bor
-
+    
+    
 }
 
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
 }
-  
-  /* Track */
+
+/* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
-   
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 5px ;
+    background: #888;
+    border-radius: 5px;
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
 }

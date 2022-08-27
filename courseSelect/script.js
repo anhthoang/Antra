@@ -13,45 +13,46 @@ const Api = (() => {
   };
 })();
 
-//Api().getCourseList();
 
 //------------------------------------------- View------------------------------------------------ //
 
 
 const View = (() => {
     const domString = {
-        courseList : 'courseList_container'
-    }
+        courseListContainer : 'courseList_container'
+    };
     const render = (element, template) => {
         element.innerHTML = template;
-    }
-    
+    };
+
     const createTmp = array =>{
         let template = '';
         array.forEach(course => {
             template += `
             <li>
-                <span>${course.courseName}</span>
-                <span>${course.required}</span>
-                <span>${course.credit}</span>
-              </li>
+                <span>
+                    <p>${course.courseName}</p>
+                    <p>Course Type: ${course.required ? "Required" : "Selective"}</p>
+                    <p>Course Credit ${course.credit}</p>
+                </span>
+             </li>
 
             `;
             
         });
         return template;
-    }
+    };
   return {
     render,
     domString,
-    createTmp
+    createTmp,
   };
 })();
 
 //------------------------------------------- Model------------------------------------------------ //
 
 const Model = ((api) => {
-  const getCourseList = api.getCourseList;
+  const {getCourseList}= api;
 
   return {
     getCourseList,
@@ -63,15 +64,17 @@ const Model = ((api) => {
 const Controller = ((model,view) => {
   const init = () => {
 
-    const courseList = document.querySelector(view.domString.courseList);
-    model.getCourseList().then(courselist => {
-        const template = view.createTmp(courselist);
+    const courseList = document.getElementById(view.domString.courseListContainer);
+    // console.log(courseList);
+    model.getCourseList().then(courses => {
+         const template = view.createTmp(courses);
         view.render(courseList, template);
+        //console.log(template);
     });
   };
 
   return {
-    init,
+    init
   };
 })(Model, View);
 
