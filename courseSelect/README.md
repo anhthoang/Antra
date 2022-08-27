@@ -12,8 +12,12 @@ JS logic:
 
     - below is the problem I encounter
 
-<<<<<<< HEAD
+
 ![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/error.png) 
-=======
-![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/error.png) 
->>>>>>> a3a69d4b98b10a5b3d749ff0d75ac7b00651baa9
+
+
+#### Feature 1(Updated)
+
+    - Finish populate data from json server
+
+![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/feature1.png)
