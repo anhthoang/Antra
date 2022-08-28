@@ -21,3 +21,5 @@ JS logic:
     - Finish populate data from json server
 
 ![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/feature1.png)
+
+![image](https://github.com/anhthoang/Antra/blob/main/courseSelect/feature1.1.png)

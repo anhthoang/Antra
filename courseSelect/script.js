@@ -2,46 +2,47 @@ const Api = (() => {
   const baseUrl = "http://localhost:4232";
   const courseListPath = "courseList";
 
-  const getCourseList = () => 
+  const getCourseList = () =>
     fetch([baseUrl, courseListPath].join("/")).then((response) =>
       response.json()
     );
-  
 
   return {
     getCourseList,
   };
 })();
 
-
 //------------------------------------------- View------------------------------------------------ //
 
-
 const View = (() => {
-    const domString = {
-        courseListContainer : 'courseList_container'
-    };
-    const render = (element, template) => {
-        element.innerHTML = template;
-    };
+  const domString = {
+    courseListContainer: "courseList_container",
+    tagName: "li",
+  };
+  const render = (element, template) => {
+    element.innerHTML = template;
+  };
 
-    const createTmp = array =>{
-        let template = '';
-        array.forEach(course => {
-            template += `
-            <li>
-                <span>
+  const createTmp = (array) => {
+    let template = "";
+    array.forEach((course) => {
+      template += `
+     
+            <li >
+              <span>
                     <p>${course.courseName}</p>
-                    <p>Course Type: ${course.required ? "Required" : "Selective"}</p>
+                    <p>Course Type: ${
+                      course.required ? "Compulsory" : "Elective"
+                    }</p>
                     <p>Course Credit ${course.credit}</p>
-                </span>
+              </span>
              </li>
+           
 
             `;
-            
-        });
-        return template;
-    };
+    });
+    return template;
+  };
   return {
     render,
     domString,
@@ -52,7 +53,7 @@ const View = (() => {
 //------------------------------------------- Model------------------------------------------------ //
 
 const Model = ((api) => {
-  const {getCourseList}= api;
+  const { getCourseList } = api;
 
   return {
     getCourseList,
@@ -61,20 +62,32 @@ const Model = ((api) => {
 
 //------------------------------------------- Controller------------------------------------------------ //
 
-const Controller = ((model,view) => {
+const Controller = ((model, view) => {
   const init = () => {
+    const courseListContainer = document.getElementById(
+      view.domString.courseListContainer
+    );
 
-    const courseList = document.getElementById(view.domString.courseListContainer);
-    // console.log(courseList);
-    model.getCourseList().then(courses => {
-         const template = view.createTmp(courses);
-        view.render(courseList, template);
-        //console.log(template);
+    model.getCourseList().then((courses) => {
+      const template = view.createTmp(courses);
+      view.render(courseListContainer, template);
+      // console.log(courseListContainer);
+      const course_list = 
+        document.querySelectorAll(view.domString.tagName)
+      ;
+      console.log(course_list);
+      course_list.forEach((course) => {
+        course.addEventListener(
+          "click",
+          // (event) => (console.log(event.currentTarget))
+           (event) => (event.currentTarget.style.background = "deepskyblue")
+        );
+      });
     });
   };
 
   return {
-    init
+    init,
   };
 })(Model, View);
 
